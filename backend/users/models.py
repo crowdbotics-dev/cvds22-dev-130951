@@ -23,6 +23,13 @@ class User(AbstractUser):
         blank=True,
         max_length=255,
     )
+    rel_zsad_1_1 = models.OneToOneField(
+        "home.Zsad",
+        blank=True,
+        null=True,
+        on_delete=models.CASCADE,
+        related_name="user_rel_zsad_1_1",
+    )
 
     def get_absolute_url(self):
         return reverse("users:detail", kwargs={"username": self.username})
